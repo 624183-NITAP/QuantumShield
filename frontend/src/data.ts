@@ -1,0 +1,140 @@
+import type { Lesson, QuizQuestion } from './types'
+
+export const lessons: Lesson[] = [
+  {
+    id: 'qubits',
+    title: 'Qubits',
+    description: 'A qubit is the fundamental unit of quantum information, combining classical 0 and 1 states through superposition.',
+    summary: 'Qubits can exist in a blend of states, which gives quantum computers their expressive power.',
+    keyTakeaway: 'A qubit stores more than a single bit of classical information because it lives in a two-dimensional state space.',
+    analogy: 'Think of a spinning coin that is not yet settled into heads or tails.',
+    math: '|ψ⟩ = α|0⟩ + β|1⟩, where |α|² + |β|² = 1.',
+    nextLesson: 'Superposition',
+  },
+  {
+    id: 'superposition',
+    title: 'Superposition',
+    description: 'Superposition lets a qubit occupy a combination of basis states until measurement collapses it.',
+    summary: 'Superposition is the reason quantum systems can represent many possibilities at once.',
+    keyTakeaway: 'Measurement forces the qubit into a definite classical outcome.',
+    analogy: 'A radio signal carrying multiple frequencies at the same time.',
+    math: 'A state like |+⟩ = (|0⟩ + |1⟩)/√2 is equally likely to collapse to either outcome.',
+    nextLesson: 'Quantum Noise',
+  },
+  {
+    id: 'noise',
+    title: 'Quantum Noise',
+    description: 'Quantum systems interact with their environment, causing errors that are not simple classical bit flips.',
+    summary: 'Noise introduces uncertainty and decoherence into quantum computations.',
+    keyTakeaway: 'Real quantum devices need error protection because noise accumulates quickly.',
+    analogy: 'A whispered message becoming distorted as it passes through a crowded room.',
+    math: 'The density matrix formalism captures mixed states caused by environmental interaction.',
+    nextLesson: 'Bit Flip Error',
+  },
+  {
+    id: 'bit-flip',
+    title: 'Bit Flip Error',
+    description: 'A bit flip error changes |0⟩ to |1⟩ or vice versa, analogous to a classical bit inversion.',
+    summary: 'Bit flip errors are a common first model for understanding QEC.',
+    keyTakeaway: 'A repetition code can detect and correct single bit flips.',
+    analogy: 'Sending the same message three times and trusting the majority.',
+    math: 'The encoded state |0⟩ → |000⟩ and |1⟩ → |111⟩.',
+    nextLesson: 'Phase Flip Error',
+  },
+  {
+    id: 'phase-flip',
+    title: 'Phase Flip Error',
+    description: 'A phase flip changes the relative sign in a superposition, which can be harder to see than a bit flip.',
+    summary: 'Phase flip errors affect interference patterns rather than classical bit values.',
+    keyTakeaway: 'Phase errors must be protected with a code that is sensitive to relative phases.',
+    analogy: 'Changing the timing of a beat in a song so harmony breaks apart.',
+    math: 'A phase flip maps |+⟩ to |−⟩.',
+    nextLesson: 'Shor Code',
+  },
+  {
+    id: 'shor',
+    title: 'Shor Code',
+    description: 'Shor code combines bit-flip and phase-flip protection into a powerful, fault-tolerant encoding.',
+    summary: 'Shor code is one of the earliest and most important error correction codes in quantum computing.',
+    keyTakeaway: 'It encodes a logical qubit into nine physical qubits to protect against both error types.',
+    analogy: 'Creating a backup system that preserves both the message and its rhythm.',
+    math: 'The code uses a concatenation of repetition codes to protect against both X and Z errors.',
+    nextLesson: 'Quantum Error Mitigation',
+  },
+  {
+    id: 'mitigation',
+    title: 'Quantum Error Mitigation',
+    description: 'Error mitigation reduces bias in noisy computations without fully correcting every error.',
+    summary: 'Mitigation is a practical strategy for near-term quantum devices.',
+    keyTakeaway: 'It improves result quality even when full fault tolerance is not yet available.',
+    analogy: 'Calibrating a camera to reduce blur instead of rebuilding the lens.',
+    math: 'Error mitigation techniques estimate noise and extrapolate cleaner observables.',
+    nextLesson: 'Home',
+  },
+]
+
+export const quizBank: Record<string, QuizQuestion[]> = {
+  qubits: [
+    {
+      id: 1,
+      prompt: 'What is a qubit?',
+      options: ['A classical bit', 'A two-level quantum system', 'A laser pulse', 'A memory register'],
+      answer: 'A two-level quantum system',
+      explanation: 'A qubit is the fundamental unit of quantum information and can be in superposition of 0 and 1.',
+    },
+  ],
+  superposition: [
+    {
+      id: 1,
+      prompt: 'What happens when a qubit in superposition is measured?',
+      options: ['It stays in both states forever', 'It collapses to one outcome', 'It becomes classical', 'It doubles its information'],
+      answer: 'It collapses to one outcome',
+      explanation: 'Measurement produces a definite classical result with probabilities defined by the state vector.',
+    },
+  ],
+  noise: [
+    {
+      id: 1,
+      prompt: 'What is quantum noise?',
+      options: ['A deliberate gate sequence', 'Unwanted interaction with the environment', 'A special quantum state', 'A measurement basis'],
+      answer: 'Unwanted interaction with the environment',
+      explanation: 'Noise introduces errors and decoherence into quantum systems.',
+    },
+  ],
+  'bit-flip': [
+    {
+      id: 1,
+      prompt: 'What does a bit flip error do?',
+      options: ['Changes the phase of a qubit', 'Swaps 0 and 1', 'Creates entanglement', 'Resets the circuit'],
+      answer: 'Swaps 0 and 1',
+      explanation: 'A bit flip changes the computational basis state of the qubit.',
+    },
+  ],
+  'phase-flip': [
+    {
+      id: 1,
+      prompt: 'What does a phase flip affect?',
+      options: ['The qubit’s energy level', 'The relative sign in a superposition', 'The number of qubits', 'The classical memory'],
+      answer: 'The relative sign in a superposition',
+      explanation: 'Phase flip errors change the phase relationship between basis states.',
+    },
+  ],
+  shor: [
+    {
+      id: 1,
+      prompt: 'Why is the Shor code important?',
+      options: ['It is the fastest gate', 'It protects against both X and Z errors', 'It eliminates all noise', 'It uses one physical qubit'],
+      answer: 'It protects against both X and Z errors',
+      explanation: 'Shor code is a foundational code that guards against both bit-flip and phase-flip errors.',
+    },
+  ],
+  mitigation: [
+    {
+      id: 1,
+      prompt: 'What is an advantage of quantum error mitigation?',
+      options: ['It guarantees perfect fidelity', 'It can improve noisy computation on near-term hardware', 'It replaces all quantum hardware', 'It removes the need for circuits'],
+      answer: 'It can improve noisy computation on near-term hardware',
+      explanation: 'Mitigation is especially useful when full fault-tolerant correction is not yet available.',
+    },
+  ],
+}
