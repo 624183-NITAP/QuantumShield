@@ -46,3 +46,31 @@ uvicorn main:app --reload --port 8000
 - Connect the simulator routes to Qiskit and Qiskit Aer runs.
 - Add richer circuit diagrams and animated state vectors.
 - Expand the quiz system with adaptive difficulty and persistent progress storage.
+
+---
+
+## Project Author
+
+**Tummuri Naga Veera Venkata Sai Ram**
+
+B.Tech, Electronics and Communication Engineering  
+National Institute of Technology Andhra Pradesh (NIT AP)
+
+Designed and developed QuantumShield as a full-stack educational platform to help learners understand Quantum Error Correction through interactive simulations, visualizations, quizzes, and hands-on experimentation using Qiskit, React, TypeScript, and FastAPI.
+
+---
+
+## Acknowledgements
+
+Developed as a submission for the **WISER Education Challenge 2026**.
+
+### Built using
+
+- Qiskit
+- React
+- TypeScript
+- FastAPI
+- Chart.js
+- Vite
+
+---

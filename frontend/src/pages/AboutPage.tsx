@@ -24,9 +24,16 @@ export function AboutPage() {
       </div>
 
       <div className="rounded-[24px] border border-white/10 bg-white/10 p-6 backdrop-blur">
-        <h2 className="text-xl font-semibold">Project authors</h2>
+        <h2 className="text-xl font-semibold">Developed By</h2>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          Designed as a full-stack educational experience for learners who want to understand how quantum error correction works without being overwhelmed by formalism.
+          <strong>Tummuri Naga Veera Venkata Sai Ram</strong>
+        </p>
+        <p className="mt-2 text-sm leading-6 text-slate-300">
+          B.Tech, Electronics and Communication Engineering<br />
+          National Institute of Technology Andhra Pradesh (NIT AP)
+        </p>
+        <p className="mt-3 text-sm leading-6 text-slate-300">
+          Developed QuantumShield as an interactive educational platform to help learners understand Quantum Error Correction and Quantum Error Mitigation through hands-on simulations, visualizations, quizzes, and real Qiskit implementations.
         </p>
       </div>
     </div>

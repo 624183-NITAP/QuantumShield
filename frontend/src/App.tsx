@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
 import { LearnPage } from './pages/LearnPage'
@@ -20,8 +20,7 @@ function App() {
           <Route path="/learn/:lessonSlug" element={<LessonPage />} />
           <Route path="/simulator" element={<SimulatorPage />} />
           <Route path="/simulator/bit-flip" element={<BitFlipSimulatorPage />} />
-          <Route path="/quiz" element={<Navigate to="/quiz/qubits" replace />} />
-          <Route path="/quiz/:lessonId" element={<QuizPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
           <Route path="/progress" element={<ProgressPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

@@ -1,4 +1,4 @@
-import type { Lesson, QuizQuestion } from './types'
+import type { Lesson } from './types'
 
 export const lessons: Lesson[] = [
   {
@@ -72,69 +72,3 @@ export const lessons: Lesson[] = [
     nextLesson: 'Home',
   },
 ]
-
-export const quizBank: Record<string, QuizQuestion[]> = {
-  qubits: [
-    {
-      id: 1,
-      prompt: 'What is a qubit?',
-      options: ['A classical bit', 'A two-level quantum system', 'A laser pulse', 'A memory register'],
-      answer: 'A two-level quantum system',
-      explanation: 'A qubit is the fundamental unit of quantum information and can be in superposition of 0 and 1.',
-    },
-  ],
-  superposition: [
-    {
-      id: 1,
-      prompt: 'What happens when a qubit in superposition is measured?',
-      options: ['It stays in both states forever', 'It collapses to one outcome', 'It becomes classical', 'It doubles its information'],
-      answer: 'It collapses to one outcome',
-      explanation: 'Measurement produces a definite classical result with probabilities defined by the state vector.',
-    },
-  ],
-  noise: [
-    {
-      id: 1,
-      prompt: 'What is quantum noise?',
-      options: ['A deliberate gate sequence', 'Unwanted interaction with the environment', 'A special quantum state', 'A measurement basis'],
-      answer: 'Unwanted interaction with the environment',
-      explanation: 'Noise introduces errors and decoherence into quantum systems.',
-    },
-  ],
-  'bit-flip': [
-    {
-      id: 1,
-      prompt: 'What does a bit flip error do?',
-      options: ['Changes the phase of a qubit', 'Swaps 0 and 1', 'Creates entanglement', 'Resets the circuit'],
-      answer: 'Swaps 0 and 1',
-      explanation: 'A bit flip changes the computational basis state of the qubit.',
-    },
-  ],
-  'phase-flip': [
-    {
-      id: 1,
-      prompt: 'What does a phase flip affect?',
-      options: ['The qubit’s energy level', 'The relative sign in a superposition', 'The number of qubits', 'The classical memory'],
-      answer: 'The relative sign in a superposition',
-      explanation: 'Phase flip errors change the phase relationship between basis states.',
-    },
-  ],
-  shor: [
-    {
-      id: 1,
-      prompt: 'Why is the Shor code important?',
-      options: ['It is the fastest gate', 'It protects against both X and Z errors', 'It eliminates all noise', 'It uses one physical qubit'],
-      answer: 'It protects against both X and Z errors',
-      explanation: 'Shor code is a foundational code that guards against both bit-flip and phase-flip errors.',
-    },
-  ],
-  mitigation: [
-    {
-      id: 1,
-      prompt: 'What is an advantage of quantum error mitigation?',
-      options: ['It guarantees perfect fidelity', 'It can improve noisy computation on near-term hardware', 'It replaces all quantum hardware', 'It removes the need for circuits'],
-      answer: 'It can improve noisy computation on near-term hardware',
-      explanation: 'Mitigation is especially useful when full fault-tolerant correction is not yet available.',
-    },
-  ],
-}

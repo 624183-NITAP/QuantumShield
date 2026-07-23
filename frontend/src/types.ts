@@ -11,17 +11,21 @@ export interface Lesson {
 
 export interface QuizQuestion {
   id: number
-  prompt: string
+  category: string
+  question: string
   options: string[]
-  answer: string
+  correctAnswer: number
   explanation: string
 }
 
 export interface QuizResult {
-  score: number
-  total: number
+  totalScore: number
+  totalQuestions: number
   percentage: number
-  feedback: string
+  correctAnswers: number
+  incorrectAnswers: number
+  timeTaken: string
+  performanceLevel: 'Beginner' | 'Intermediate' | 'Advanced' | 'Quantum Expert'
 }
 
 export interface SimulationResponse {
