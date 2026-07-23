@@ -83,14 +83,29 @@ Each endpoint returns:
 - Compare bit-flip, phase-flip, and Shor-code strategies.
 - Interpret circuit diagrams and measurement statistics for research-style demos.
 
-## Project author
+## Screenshots
+
+<img width="1877" height="867" alt="image-5" src="https://github.com/user-attachments/assets/6043d67d-b96c-4d4c-9a9c-d7e3889ff722" />
+<img width="1911" height="868" alt="image-3" src="https://github.com/user-attachments/assets/a64215e7-8710-46c9-be86-fe75c779528f" />
+<img width="1900" height="866" alt="image-1" src="https://github.com/user-attachments/assets/70753c75-611d-4627-9fac-47435282f33a" />
+
+
+## Project Author
 
 **Tummuri Naga Veera Venkata Sai Ram**
 
 B.Tech, Electronics and Communication Engineering  
 National Institute of Technology Andhra Pradesh (NIT AP)
 
-QuantumShield was designed and developed as a full-stack educational platform to make quantum error correction more approachable through interactive learning, live simulation, and polished visual storytelling.
+**Email:** 624183@student.nitandhra.ac.in
+
+QuantumShield was designed and developed as a full-stack educational platform to make Quantum Error Correction more approachable through interactive learning, live simulation, and polished visual storytelling.
+
+## Team Members
+
+| Name | Role | Email |
+|------|------|-------|
+| Tummuri Naga Veera Venkata Sai Ram | Sole Developer (Research, UI/UX Design, Frontend Development, Backend Development, Qiskit Integration, Testing, Documentation, GitHub Management) | 624183@student.nitandhra.ac.in |
 
 ## Acknowledgements
 
@@ -106,5 +121,17 @@ Developed as part of the **WISER Education Challenge 2026**.
 - Chart.js
 - Vite
 - Framer Motion
+- Tailwind CSS
+- Matplotlib
 
+## References
+
+This project was developed using the following official resources:
+
+- Qiskit Documentation: https://qiskit.org/documentation/
+- IBM Quantum Learning: https://learning.quantum.ibm.com/
+- React Documentation: https://react.dev/
+- FastAPI Documentation: https://fastapi.tiangolo.com/
+- Chart.js Documentation: https://www.chartjs.org/
+- Vite Documentation: https://vitejs.dev/
 ---
