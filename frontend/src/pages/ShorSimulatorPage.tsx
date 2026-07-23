@@ -15,9 +15,9 @@ interface SimulationResponse {
   circuit_image?: string | null
 }
 
-const BACKEND_URL = 'http://127.0.0.1:8000/bitflip'
+const BACKEND_URL = 'http://127.0.0.1:8000/shor'
 
-export function BitFlipSimulatorPage() {
+export function ShorSimulatorPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<SimulationResponse | null>(null)
@@ -37,8 +37,8 @@ export function BitFlipSimulatorPage() {
         {
           label: 'Measurement counts',
           data: labels.map((label) => result.counts[label]),
-          backgroundColor: 'rgba(34, 211, 238, 0.8)',
-          borderColor: 'rgba(34, 211, 238, 1)',
+          backgroundColor: 'rgba(251, 191, 36, 0.8)',
+          borderColor: 'rgba(251, 191, 36, 1)',
           borderWidth: 1,
         },
       ],
@@ -50,7 +50,13 @@ export function BitFlipSimulatorPage() {
     setError(null)
 
     try {
-      const response = await axios.get<SimulationResponse>(BACKEND_URL)
+      const response = await axios.get<SimulationResponse>(BACKEND_URL, {
+        params: {
+          error_probability: 0.1,
+          shots: 1024,
+          seed: 42,
+        },
+      })
       setResult(response.data)
     } catch (err) {
       console.error(err)
@@ -68,10 +74,10 @@ export function BitFlipSimulatorPage() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-[28px] border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-cyan-950/20 backdrop-blur">
-        <h1 className="text-3xl font-semibold text-white sm:text-4xl">Bit Flip Simulator</h1>
+      <div className="rounded-[28px] border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-amber-950/20 backdrop-blur">
+        <h1 className="text-3xl font-semibold text-white sm:text-4xl">Shor Simulator</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">
-          Run the live Qiskit bit-flip correction simulation and inspect the measured outcomes, fidelity, and recovery steps.
+          Run the live Qiskit Shor-code simulation and inspect the measured outcomes, fidelity, and recovery steps.
         </p>
       </div>
 
@@ -79,10 +85,10 @@ export function BitFlipSimulatorPage() {
         <div className="rounded-[24px] border border-white/10 bg-slate-900/70 p-6 backdrop-blur">
           <h2 className="text-xl font-semibold text-white">Explanation</h2>
           <p className="mt-4 text-sm leading-8 text-slate-300">
-            The bit-flip code protects a logical qubit by encoding it into multiple physical qubits. If one physical qubit flips, the syndrome reveals the error and allows recovery without destroying the encoded information.
+            The Shor code builds a fault-tolerant logical qubit by combining repetition with phase-rotation and syndrome extraction, providing protection against both X and Z errors.
           </p>
 
-          <div className="mt-6 rounded-[20px] border border-dashed border-cyan-400/30 bg-cyan-500/10 p-6 text-center">
+          <div className="mt-6 rounded-[20px] border border-dashed border-amber-400/30 bg-amber-500/10 p-6 text-center">
             <h3 className="text-lg font-semibold text-white">Live quantum simulation</h3>
             <p className="mt-3 text-sm leading-7 text-slate-300">
               Start the backend and run the simulation to see the real error-correction workflow from Qiskit.
@@ -93,7 +99,7 @@ export function BitFlipSimulatorPage() {
             <button
               onClick={runSimulation}
               disabled={loading}
-              className="rounded-full bg-cyan-500 px-4 py-2 font-medium text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-70"
+              className="rounded-full bg-amber-400 px-4 py-2 font-medium text-slate-950 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-70"
             >
               {loading ? 'Running…' : 'Run Simulation'}
             </button>
@@ -103,8 +109,8 @@ export function BitFlipSimulatorPage() {
           </div>
 
           {loading && (
-            <div className="mt-6 flex items-center gap-3 text-sm text-cyan-200">
-              <div className="h-5 w-5 animate-spin rounded-full border-2 border-cyan-400 border-t-transparent" />
+            <div className="mt-6 flex items-center gap-3 text-sm text-amber-200">
+              <div className="h-5 w-5 animate-spin rounded-full border-2 border-amber-400 border-t-transparent" />
               <span>Waiting for the backend simulation…</span>
             </div>
           )}
@@ -159,7 +165,7 @@ export function BitFlipSimulatorPage() {
                 result.steps.map((step, index) => (
                   <div key={step} className="flex gap-3">
                     <div className="flex flex-col items-center">
-                      <div className="mt-1 h-3 w-3 rounded-full border border-cyan-400 bg-cyan-500" />
+                      <div className="mt-1 h-3 w-3 rounded-full border border-amber-400 bg-amber-500" />
                       {index < result.steps.length - 1 ? <div className="mt-1 h-full w-px bg-white/10" /> : null}
                     </div>
                     <div className="rounded-[16px] border border-white/10 bg-slate-950/70 p-3 text-sm leading-7 text-slate-300">

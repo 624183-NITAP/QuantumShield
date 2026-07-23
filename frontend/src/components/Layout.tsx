@@ -19,10 +19,13 @@ export function Layout({ children }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(106,90,255,0.22),_transparent_35%),linear-gradient(135deg,_#04070f,_#0f172a)] text-slate-100">
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+    <div className="relative min-h-screen text-slate-100">
+      <header className="sticky top-0 z-20 border-b border-white/10 bg-slate-950/70 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link to="/" className="text-xl font-semibold tracking-wide text-cyan-300">
+          <Link
+            to="/"
+            className="bg-gradient-to-r from-cyan-300 via-sky-400 to-violet-400 bg-clip-text text-xl font-semibold tracking-[0.18em] text-transparent"
+          >
             QuantumShield
           </Link>
 
@@ -32,7 +35,7 @@ export function Layout({ children }: LayoutProps) {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `rounded-full px-4 py-2 text-sm font-medium transition duration-200 ${isActive ? 'bg-cyan-500/20 text-cyan-300' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`
+                  `rounded-full px-4 py-2 text-sm font-medium transition duration-200 ${isActive ? 'bg-cyan-500/20 text-cyan-300 shadow-[0_0_24px_rgba(6,182,212,0.28)]' : 'text-slate-300 hover:bg-white/10 hover:text-white'}`
                 }
               >
                 {item.label}
@@ -79,7 +82,11 @@ export function Layout({ children }: LayoutProps) {
         </AnimatePresence>
       </header>
 
-      <main className="mx-auto max-w-7xl px-6 py-10 lg:px-8">{children}</main>
+      <main className="relative z-10 mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
+          {children}
+        </motion.div>
+      </main>
     </div>
   )
 }

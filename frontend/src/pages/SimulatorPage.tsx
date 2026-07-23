@@ -12,6 +12,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import type { SimulationResponse } from '../types'
+import { CircuitDiagramPanel } from '../components/CircuitDiagramPanel'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -33,6 +34,7 @@ function getFallbackResponse(active: string): SimulationResponse {
       error_rate: 0.14,
       summary: 'Phase-flip noise injected and corrected in the demo workflow.',
       steps: ['Phase noise introduced', 'Parity check performed', 'Correction applied'],
+      circuit_image: null,
     }
   }
 
@@ -43,6 +45,7 @@ function getFallbackResponse(active: string): SimulationResponse {
       error_rate: 0.18,
       summary: 'Shor-code recovery circuit applied for the demo workflow.',
       steps: ['Shor encoding prepared', 'Error syndrome measured', 'Recovery circuit applied'],
+      circuit_image: null,
     }
   }
 
@@ -52,6 +55,7 @@ function getFallbackResponse(active: string): SimulationResponse {
     error_rate: 0.22,
     summary: 'Bit-flip noise injected and corrected in the demo workflow.',
     steps: ['Bit-flip noise introduced', 'Syndrome measured', 'Correction applied'],
+    circuit_image: null,
   }
 }
 
@@ -76,6 +80,36 @@ export function SimulatorPage() {
           label: 'Measurement counts',
           data: labels.length > 0 ? labels.map((label) => counts[label] ?? 0) : [0, 0, 0, 0],
           backgroundColor: ['#22d3ee', '#818cf8', '#f59e0b', '#f472b6'],
+        },
+      ],
+    }
+  }, [result])
+
+  const fidelityChartData = useMemo(() => {
+    if (!result) {
+      return {
+        labels: ['Fidelity', 'Error Rate'],
+        datasets: [
+          {
+            label: 'Observed score',
+            data: [0, 0],
+            backgroundColor: ['#22d3ee', '#f87171'],
+            borderColor: ['#67e8f9', '#fca5a5'],
+            borderWidth: 1,
+          },
+        ],
+      }
+    }
+
+    return {
+      labels: ['Fidelity', 'Error Rate'],
+      datasets: [
+        {
+          label: 'Observed score',
+          data: [result.fidelity, result.error_rate],
+          backgroundColor: ['#22d3ee', '#f87171'],
+          borderColor: ['#67e8f9', '#fca5a5'],
+          borderWidth: 1,
         },
       ],
     }
@@ -186,19 +220,8 @@ export function SimulatorPage() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-[20px] border border-white/10 bg-slate-950/70 p-6">
-            <h2 className="text-xl font-semibold">Quantum circuit</h2>
-            <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/70 p-4">
-              {result && result.circuit_image ? (
-                <img
-                  src={`data:image/png;base64,${result.circuit_image}`}
-                  alt="Quantum circuit diagram"
-                  className="mx-auto w-full max-w-2xl rounded-lg border border-white/10 bg-white"
-                />
-              ) : (
-                <p className="text-sm leading-7 text-slate-400">Run the simulation to display the circuit diagram.</p>
-              )}
-            </div>
+          <div className="mt-6">
+            <CircuitDiagramPanel circuitImage={result?.circuit_image} loading={loading} title="Quantum circuit" />
           </div>
         </div>
 
@@ -213,7 +236,38 @@ export function SimulatorPage() {
           <div className="rounded-[24px] border border-white/10 bg-white/10 p-6 backdrop-blur">
             <h2 className="text-xl font-semibold">Fidelity Graph</h2>
             <div className="mt-4 rounded-2xl border border-white/10 bg-slate-950/70 p-5 text-sm text-slate-300">
-              {result ? `Observed fidelity: ${(result.fidelity * 100).toFixed(1)}%` : 'Fidelity will appear after execution.'}
+              <div className="h-56">
+                <Bar
+                  data={fidelityChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: { display: false },
+                    },
+                    scales: {
+                      x: {
+                        ticks: { color: '#cbd5e1' },
+                        grid: { color: 'rgba(255,255,255,0.08)' },
+                      },
+                      y: {
+                        min: 0,
+                        max: 1,
+                        ticks: {
+                          color: '#cbd5e1',
+                          callback: (value) => Number(value).toFixed(2),
+                        },
+                        grid: { color: 'rgba(255,255,255,0.08)' },
+                      },
+                    },
+                  }}
+                />
+              </div>
+              {result ? (
+                <p className="mt-3 text-cyan-200">Observed fidelity: {(result.fidelity * 100).toFixed(1)}%</p>
+              ) : (
+                <p className="mt-3 text-slate-400">Fidelity will appear after execution.</p>
+              )}
             </div>
           </div>
 

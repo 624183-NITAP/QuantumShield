@@ -1,29 +1,43 @@
 # QuantumShield
 
-QuantumShield is a modern educational platform for learning quantum error correction through interactive lessons, visual simulations, quizzes, and a scalable frontend/backend architecture.
+QuantumShield is a futuristic educational platform for learning quantum error correction through interactive lessons, live Qiskit-powered simulations, polished visual analytics, and a premium research-showcase frontend experience.
 
-## Project overview
+## What QuantumShield does
 
-- Learn the foundations of qubits, superposition, noise, and error correction.
-- Explore interactive simulator views for bit-flip, phase-flip, and Shor-code concepts.
-- Track progress through lessons and quizzes in a polished dashboard experience.
+- Teaches the foundations of qubits, superposition, noise, and quantum error correction.
+- Provides guided simulator experiences for bit-flip, phase-flip, and Shor-code workflows.
+- Visualizes the actual Qiskit circuit used in each run as a generated PNG diagram.
+- Displays measurement histograms, fidelity, error rate, and step-by-step recovery explanations.
+- Preserves a responsive and immersive interface for education and demo use.
 
-## Folder structure
+## Current project status
 
-- frontend/: React + TypeScript + Vite application
-- backend/: FastAPI API with simulation endpoints
-- docs/: Project documentation and notes
-- assets/: Brand and supporting media assets
+This version of QuantumShield includes:
 
-## Learning objectives
+- a React + TypeScript + Vite frontend with glassmorphism visuals and a premium deep-space quantum theme
+- a FastAPI backend with simulation endpoints for:
+  - `/bitflip`
+  - `/phaseflip`
+  - `/shor`
+- Qiskit circuit rendering integrated into the simulator response payload via `circuit_image`
+- live measurement and fidelity dashboards using Chart.js
 
-- Understand qubits, superposition, and quantum noise.
-- Recognize how bit-flip and phase-flip errors occur.
-- Appreciate why Shor code and mitigation techniques matter in real quantum systems.
+## Tech stack
 
-## Installation
+- Frontend: React, TypeScript, Vite, Framer Motion, Chart.js
+- Backend: FastAPI, Qiskit, Qiskit Aer, Matplotlib
+- Styling: Tailwind CSS and custom glassmorphism / aurora-inspired UI styling
 
-### Frontend
+## Repository structure
+
+- `frontend/`: interactive user interface and simulator pages
+- `backend/`: FastAPI server and QEC simulation logic
+- `docs/`: architecture and project documentation
+- `backend/tests/`: backend regression tests
+
+## Quick start
+
+### 1. Install frontend dependencies
 
 ```bash
 cd frontend
@@ -31,46 +45,66 @@ npm install
 npm run dev
 ```
 
-### Backend
+### 2. Start the backend
 
 ```bash
 cd backend
 python -m venv .venv
 .venv\Scripts\activate
-pip install fastapi uvicorn
+pip install fastapi uvicorn qiskit qiskit-aer matplotlib
 uvicorn main:app --reload --port 8000
 ```
 
-## Future improvements
+### 3. Open the app
 
-- Connect the simulator routes to Qiskit and Qiskit Aer runs.
-- Add richer circuit diagrams and animated state vectors.
-- Expand the quiz system with adaptive difficulty and persistent progress storage.
+- Frontend: `http://127.0.0.1:5173`
+- Backend API: `http://127.0.0.1:8000`
 
----
+## Simulation endpoints
 
-## Project Author
+The current API exposes the following response-generating endpoints:
+
+- `GET /bitflip`
+- `GET /phaseflip`
+- `GET /shor`
+
+Each endpoint returns:
+
+- `counts`
+- `fidelity`
+- `error_rate`
+- `summary`
+- `steps`
+- `circuit_image` (Base64 PNG of the Qiskit circuit)
+
+## Learning outcomes
+
+- Understand the role of quantum error correction in noisy device environments.
+- Compare bit-flip, phase-flip, and Shor-code strategies.
+- Interpret circuit diagrams and measurement statistics for research-style demos.
+
+## Project author
 
 **Tummuri Naga Veera Venkata Sai Ram**
 
 B.Tech, Electronics and Communication Engineering  
 National Institute of Technology Andhra Pradesh (NIT AP)
 
-Designed and developed QuantumShield as a full-stack educational platform to help learners understand Quantum Error Correction through interactive simulations, visualizations, quizzes, and hands-on experimentation using Qiskit, React, TypeScript, and FastAPI.
-
----
+QuantumShield was designed and developed as a full-stack educational platform to make quantum error correction more approachable through interactive learning, live simulation, and polished visual storytelling.
 
 ## Acknowledgements
 
-Developed as a submission for the **WISER Education Challenge 2026**.
+Developed as part of the **WISER Education Challenge 2026**.
 
-### Built using
+## Built with
 
 - Qiskit
+- Qiskit Aer
 - React
 - TypeScript
 - FastAPI
 - Chart.js
 - Vite
+- Framer Motion
 
 ---

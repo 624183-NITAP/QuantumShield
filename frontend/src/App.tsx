@@ -5,6 +5,8 @@ import { LearnPage } from './pages/LearnPage'
 import { LessonPage } from './pages/LessonPage'
 import { SimulatorPage } from './pages/SimulatorPage'
 import { BitFlipSimulatorPage } from './pages/BitFlipSimulatorPage'
+import { PhaseFlipSimulatorPage } from './pages/PhaseFlipSimulatorPage'
+import { ShorSimulatorPage } from './pages/ShorSimulatorPage'
 import { QuizPage } from './pages/QuizPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { AboutPage } from './pages/AboutPage'
@@ -20,6 +22,8 @@ function App() {
           <Route path="/learn/:lessonSlug" element={<LessonPage />} />
           <Route path="/simulator" element={<SimulatorPage />} />
           <Route path="/simulator/bit-flip" element={<BitFlipSimulatorPage />} />
+          <Route path="/simulator/phase-flip" element={<PhaseFlipSimulatorPage />} />
+          <Route path="/simulator/shor" element={<ShorSimulatorPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/progress" element={<ProgressPage />} />
           <Route path="/about" element={<AboutPage />} />

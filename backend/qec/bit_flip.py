@@ -9,12 +9,11 @@ matplotlib.use('Agg')
 from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister, transpile
 from qiskit_aer import AerSimulator
 from qiskit_aer.noise import NoiseModel, pauli_error
-from qiskit.visualization import circuit_drawer
 
 
 def _render_circuit_image(circuit: QuantumCircuit) -> str | None:
     image_buffer = BytesIO()
-    figure = circuit_drawer(circuit, output='mpl')
+    figure = circuit.draw('mpl')
     if figure is not None:
         figure.savefig(image_buffer, format='png', bbox_inches='tight')
         image_buffer.seek(0)

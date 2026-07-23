@@ -1,32 +1,60 @@
-# React + TypeScript + Vite
+# QuantumShield Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This frontend powers the QuantumShield educational experience with a responsive, futuristic quantum-themed interface.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The frontend is built with:
 
-## React Compiler
+- React
+- TypeScript
+- Vite
+- Framer Motion
+- Chart.js
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+It includes:
 
-## Expanding the Oxlint configuration
+- a home and learning experience
+- interactive simulator pages
+- quiz and progress flows
+- premium dark glassmorphism visuals with aurora-inspired background effects
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Main pages
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- Home
+- Learn
+- Simulator
+- Quiz
+- Progress
+- About
+
+## Simulator pages
+
+The simulator experience remains the same from a functionality perspective and now displays:
+
+- measurement histograms
+- fidelity and error-rate metrics
+- recovery-step timelines
+- actual Qiskit-generated circuit PNGs from the backend response
+
+## Development
+
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Production build
+
+```bash
+cd frontend
+npm run build
+```
+
+## Notes
+
+- The app is designed to work with the FastAPI backend on `http://127.0.0.1:8000`.
+- The simulator visual styling is intentionally polished for educational demos and hackathon/research showcase use.
+
+---
